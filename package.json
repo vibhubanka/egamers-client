@@ -48,6 +48,7 @@
   },
   "devDependencies": {
     "@types/humps": "^2.0.0",
+    "@types/react-redux": "^7.1.9",
     "@types/redux-logger": "^3.0.8"
   }
 }

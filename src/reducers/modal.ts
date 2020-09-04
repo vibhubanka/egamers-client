@@ -1,16 +1,14 @@
 import * as actions from '../actionTypes';
-import { mergeRight } from 'ramda';
+import { ModalPayload } from 'interface';
 
 export interface ModalState {
   show: boolean;
-  data: actions.ShowModalAction['payload'];
+  data: ModalPayload;
 }
 
 const initialState: ModalState = {
   show: false,
-  data: {
-    centered: false,
-  },
+  data: {},
 };
 
 export default function modalReducer(state: ModalState = initialState, action: actions.ModalAction) {
@@ -21,10 +19,10 @@ export default function modalReducer(state: ModalState = initialState, action: a
       return {
         ...state,
         show: true,
-        data: mergeRight(state.data, payload as actions.ShowModalAction['payload']),
+        data: payload || {},
       };
     case actions.HIDE_MODAL:
-      return { ...state, show: false };
+      return initialState;
     default:
       return state;
   }
